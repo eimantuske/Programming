@@ -10,8 +10,7 @@ int main() {
     int *p_darr= new int[num];
     for(int i = 0; i < num; i++){
     p_darr[i]=i;
-    cout <<"value of : "<< i<<endl;
-    cout<<"Element is : "<<p_darr[i]<<endl;
+    cout <<"value of : "<< i<< " Element is : "<<p_darr[i]<<endl;
     }
     delete[] p_darr;
 
