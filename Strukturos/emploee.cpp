@@ -25,18 +25,32 @@ cout << "Iveskite darbuotoju skaiciu:  ";
     int find;
 
     cin >> n;
+
     employee darbuotojai[n];
     ivedimas(darbuotojai, n);
+
+    char testi;
     
-    cout << "Paieska   " <<endl;
-    cout << "iveskite darbuotojo skyriaus numeri:  " <<endl;
-    cin >> find;
+    do {
+        cout << "\n--- PAIESKA ---" << endl;
+        cout << "Iveskite darbuotojo skyriaus numeri: ";
+        int find;
+        cin >> find;
 
-    int index = paieska(darbuotojai, n, find);
-    if(index != -1){
-        paieska_isvedimas(darbuotojai, n, find);
-    }   
+        int index = paieska(darbuotojai, n, find);
 
+        if (index != -1) {
+
+            paieska_isvedimas(darbuotojai, n, find);
+
+        } 
+        cout << "Ar norite atlikti kita paieska? (y/n): ";
+        cin >> testi;
+
+    } while (testi == 'y' || testi == 'Y');
+
+    cout << "Programa baigta!" << endl;
+    return 0;
 }
 void ivedimas(employee darbuotojai[], int n){
     for(int i = 0; i < n; i++){
