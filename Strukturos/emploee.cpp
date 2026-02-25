@@ -1,3 +1,6 @@
+//C++ programa kuri leidzia ivesti darbuotoju duomenis,
+//saugo juos strukturoje ir atlieka paieska pagal skyriaus numeri.
+
 #include <iostream>
 #include <string>
 
@@ -11,7 +14,9 @@ struct employee {
     int skyriaus_numeris;
 };
 
+void ivedimas(employee darbuotojai[], int n);
 int paieska(employee darbuotojai[], int n, int find);
+void paieska_isvedimas(employee darbuotojai[], int n, int find);
 
 
 int main(){
@@ -20,9 +25,20 @@ cout << "Iveskite darbuotoju skaiciu:  ";
     int find;
 
     cin >> n;
-
     employee darbuotojai[n];
+    ivedimas(darbuotojai, n);
+    
+    cout << "Paieska   " <<endl;
+    cout << "iveskite darbuotojo skyriaus numeri:  " <<endl;
+    cin >> find;
 
+    int index = paieska(darbuotojai, n, find);
+    if(index != -1){
+        paieska_isvedimas(darbuotojai, n, find);
+    }   
+
+}
+void ivedimas(employee darbuotojai[], int n){
     for(int i = 0; i < n; i++){
         
         cout << "Iveskite darbuotojo "<< i + 1 << " varda:  ";
@@ -39,25 +55,6 @@ cout << "Iveskite darbuotoju skaiciu:  ";
 
     }
     cout << "Uzpildete "<<n<<" darbuotoju duomenis!" << endl;
-    cout << "Paieska   " <<endl;
-    cout << "iveskite darbuotojo skyriaus numeri:  " <<endl;
-    cin >> find;
-
-    int rado = paieska(darbuotojai, n, find);
-
-    if(rado == -1){
-        return 0;
-    }
-
-    cout << "|===========================================|" << endl;
-    cout << "Darbuotojo vardas: " << darbuotojai[rado].vardas << endl;
-    cout << "Darbuotojo numeris: " << darbuotojai[rado].numeris << endl;
-    cout << "Darbuotojo atlyginimas: " << darbuotojai[rado].atlyginimas << endl;
-    cout << "Darbuotojo telefono numeris: " << darbuotojai[rado].tel_numeris << endl;
-    cout << "Darbuotojo skyriaus numeris: " << darbuotojai[rado].skyriaus_numeris << endl;
-    cout << "|===========================================|" << endl;
-    
-    return 0;
 }
 int paieska(employee darbuotojai[], int n, int find){
 
@@ -69,4 +66,17 @@ int paieska(employee darbuotojai[], int n, int find){
             cout << "Toks darbuotojas nerastas!" << endl;
             return -1;
     
+}
+void paieska_isvedimas(employee darbuotojai[], int n, int find){
+    for(int i = 0; i < n; i++){
+        if(darbuotojai[i].skyriaus_numeris == find){
+            cout << "|===========================================|" << endl;
+            cout << "Darbuotojo vardas: " << darbuotojai[i].vardas << endl;
+            cout << "Darbuotojo numeris: " << darbuotojai[i].numeris << endl;
+            cout << "Darbuotojo atlyginimas: " << darbuotojai[i].atlyginimas << endl;
+            cout << "Darbuotojo telefono numeris: " << darbuotojai[i].tel_numeris << endl;
+            cout << "Darbuotojo skyriaus numeris: " << darbuotojai[i].skyriaus_numeris << endl;
+            cout << "|===========================================|" << endl;
+        }
+    }
 }
