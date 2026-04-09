@@ -1,3 +1,6 @@
+// C++ program to demonstrate the use of classes and objects
+// This program defines a class 'car' with attributes and methods
+// and then creates objects of that class to display information about the cars.
 #include <iostream>
 #include <string>
 
@@ -55,4 +58,4 @@ int main(){
 
 
     return 0;
-}w
+}
