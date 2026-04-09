@@ -55,18 +55,24 @@ class Clock
 
 int main()
 {
-  Clock clock1; //sukurti laikrodį
+  Clock laikrodis; //sukurti laikrodį
 
   //nustatyti laikrodį į 2:30:45 PM
-  clock1.setClock(2, 30, 45, "PM");
+  laikrodis.setClock(2, 30, 45, "PM");
+
+  cout <<"=============================="<< endl;
 
   cout << "The time in standard notation is: ";
-  clock1.displayStandard(); //paroditi laiką standartiniu formatu
+  laikrodis.displayStandard(); //paroditi laiką standartiniu formatu
 
-  cout << "\nThe time in military notation is: ";
-  clock1.displayMilitary(); //paroditi laiką militarišku formatu
+  cout << endl; 
+
+  cout << "The time in military notation is: ";
+  laikrodis.displayMilitary(); //paroditi laiką militarišku formatu
 
   cout << endl;
+
+  cout << "==============================" << endl;
   
   return 0;
 }
