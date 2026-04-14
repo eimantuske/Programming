@@ -59,7 +59,11 @@ int main() {
     bankosaskaita saskaita("Jonas", 1000); // sukuriame banko sąskaitą su pradiniu balansu
     saskaita.menu(); // iškviečiame meniu funkciją
     int funkcija;
+    while (funkcija != 4){
+
     cin >> funkcija; // vartotojas pasirenka veiksmą
+    
+
     switch (funkcija) {
         case 1:
             saskaita.checkbalansas(); // peržiūrime balansą
@@ -77,6 +81,7 @@ int main() {
             cout << "Neteisingas pasirinkimas!" << endl;// jei vartotojas įveda neteisingą pasirinkimą
             
     };
+}
     return 0;
 }
 //reikia padaryti taip kad zmogus galetu paziureti ir isimesti ir isismti pinigus.
