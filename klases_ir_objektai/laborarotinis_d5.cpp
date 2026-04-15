@@ -47,6 +47,11 @@ int main(){
     vadovas.setmanager("Jonas", 2000, 500);
     vadovas.rodytiemployee();
     cout << "Bendras atlyginimas su priedu: " << vadovas.countsalary() << endl;
+    int a 
+    cin >> a;
+    cout <<
+
+
 
     return 0;
 }
