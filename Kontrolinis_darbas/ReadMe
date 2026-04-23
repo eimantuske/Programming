@@ -1,0 +1,17 @@
+Užduoties struktūra 
+Studentas privalo sukurti mažą sistemą, susidedančią iš bazinės klasės, išvestinės klasės ir main funkcijos.
+
+Dalykinė sritis - sporto klubas (Bazinė klasė - Narys, išvestinė klasė - VIPNarys, virtualus metodai - skaiciuotiMetiniMokesti() su nuolaida)
+
+Reikalavimai kodui:
+
+Kapsuliavimas: Visi duomenų laukai turi būti private arba protected. Reikalingi „getters/setters“.
+
+Paveldėjimas: Išvestinė klasė turi papildyti bazinę bent vienu unikaliu lauku.
+
+Polimorfizmas: Bazinėje klasėje turi būti bent viena virtual funkcija, kuri perrašoma (override) išvestinėje.
+
+Klaidų valdymas: Reikia realizuoti bent vieną patikrą su throw (pvz., neigiama kaina ar tuščias tekstas).
+
+Objektų valdymas: main funkcijoje sukurti išvestinės klasės objektą naudojant bazinės klasės rodyklę (Base* obj = new Derived(...)).
+
