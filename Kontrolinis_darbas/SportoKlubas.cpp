@@ -4,13 +4,14 @@
 
 using namespace std;
 
+
 class Narys {
     private:
-
         string vardas;
         string pavarde;
         int metai;
         double MetinisMokestis;
+        
     public:
         Narys(string vardas, string pavarde, int metai, double MetinisMokestis)
         {
@@ -21,7 +22,7 @@ class Narys {
                 throw invalid_argument("Amžius turi būti tarp 16 ir 100 metų.");
             };
             if(vardas.empty() || pavarde.empty()) {
-                throw invalid_argument("Vardas ir pavardė negali būti tušti.");
+                throw invalid_argument("Vardas ir pavardė negali būti tušti.");                     
             };
             this -> vardas = vardas;
             this -> pavarde = pavarde;
@@ -32,12 +33,18 @@ class Narys {
             return vardas;
         };
 
-        double getMetinisMokestis() const
-        {
+        double getMetinisMokestis() const {
             return MetinisMokestis;
         };
 
-        virtual double SkaiciuotiMokesti() {
+        void setMetinisMokestis(double naujasMokestis) {
+            if(naujasMokestis < 0) {
+                throw invalid_argument("Metinis mokestis negali būti neigiamas.");
+            };
+            this -> MetinisMokestis = naujasMokestis;
+        }
+
+        virtual double SkaiciuotiMetiniMokesti() {
             return MetinisMokestis;
         };
 
@@ -49,9 +56,8 @@ class VipNarys : public Narys {
         const double VipNuolaida = 0.35;
     public:
         VipNarys(string vardas, string pavarde, int metai, double MetinisMokestis) : Narys(vardas, pavarde, metai, MetinisMokestis) {
-            this -> VipNuolaida;
         };
-        virtual double SkaiciuotiMokesti() override {
+        virtual double SkaiciuotiMetiniMokesti() override {
             return getMetinisMokestis() * (1 - VipNuolaida);
         };
     };
@@ -67,7 +73,7 @@ Narys* sukurtiNari() {
     cin >> pavarde;
     cout << "Įveskite nario amžių: ";
     cin >> metai;
-    cout << "Įveskite nario Vip statusą (1 - Vip, 0 - ne Vip): ";
+    cout << "Koks nario statusas? (1 - Vip, 0 - ne Vip): ";
     cin >> VipStatus;
     double mokestis = 1260.0; 
     try {
@@ -82,36 +88,39 @@ Narys* sukurtiNari() {
     }
 };
 
-int main() { 
-
+void PaleistiMeniu() {
     char pasirinkimas;
+    
+    cout << "\nSveiki atvykę į sporto klubą\n" << endl;
+    
+    do {
+        cout << "\nAr norite registruoti narį? (y/n): ";
+        cin >> pasirinkimas;
 
-    cout << "\nSveiki atvykę į sporto klubą!\n" << endl;
-    cout << "Ar norite registruotis kaip narys? (y/n): ";
-    cin >> pasirinkimas;
-
-    switch (pasirinkimas) {
-        case 'y':
-        {
-            cout <<"\n"<<endl;
-            cout << "--- Nario registracija ---" << endl;
+        if (pasirinkimas == 'y') {
+            cout << "\n--- Nario registracija ---" << endl;
             Narys* naujasNarys = sukurtiNari();
 
             if (naujasNarys != nullptr) {
                 cout << "\nRegistracija sekminga!" << endl;
-                cout << naujasNarys->getVardas() << " metinis mokestis: " << naujasNarys->SkaiciuotiMokesti() << " EUR\n" << endl;  
-            
-                delete naujasNarys;
+                cout << naujasNarys->getVardas() << " metinis mokestis: " << naujasNarys->SkaiciuotiMetiniMokesti() << " EUR\n" << endl;  
+                
+                delete naujasNarys; 
             }
-        }
-            break;
-        case 'n':
+        } 
+        else if (pasirinkimas == 'n') {
             cout << "Ačiū, kad apsilankėte mūsų sporto klube. Iki pasimatymo!" << endl;
-            return 0;
-        default:
+        } 
+        else {
             cout << "Neteisingas pasirinkimas. Prašome įvesti 'y' arba 'n'." << endl;
-            return 0;
-    }
+        }
+
+    } while (pasirinkimas != 'n'); 
+}
+
+int main() { 
+
+    PaleistiMeniu();
 
     return 0;
 }
