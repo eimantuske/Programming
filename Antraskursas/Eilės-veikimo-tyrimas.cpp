@@ -25,14 +25,18 @@ using namespace std;
 
 int main() {
     queue<string> eile;
+    string vardas;
+    double n;
 
-    eile.push("Jonas");
-    eile.push("Petras");
-    eile.push("Ona");
-    eile.push("Ieva");
-    eile.push("Mantas");
+    cout <<"Iveskite kiek bus klientu: ";
+    cin >> n;
 
-    cout << "Eilė:\nJonas -> Petras -> Ona -> Ieva -> Mantas\n\n";
+    for(int i = 0; i < n; i++){ 
+       cout << i + 1 << " kliento vardas: ";
+       cin >> vardas;
+       eile.push(vardas);
+    }
+
 
 
     while (!eile.empty()) {
