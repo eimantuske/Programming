@@ -8,6 +8,7 @@ struct Node
     Node* next;
 };
 
+// Užduotyje reikalaujama funkcija
 int countNodes(Node* head)
 {
     int count = 0;
@@ -22,19 +23,47 @@ int countNodes(Node* head)
 
 int main()
 {
-    //  10 -> 20 -> 30
-    Node* n1 = new Node{10, nullptr};
-    Node* n2 = new Node{20, nullptr};
-    Node* n3 = new Node{30, nullptr};
+    int n;
+    cout << "Kiek skaičių nori įvesti? ";
+    cin >> n;
 
-    n1->next = n2;
-    n2->next = n3;
+    Node* head = nullptr;
+    Node* tail = nullptr;
 
-    cout << "Saraso 10 -> 20 -> 30 rezultatas: " << countNodes(n1) << endl;
+    if (n > 0)
+    {
+        cout << "Įvesk " << n << " skaičius (-ius):" << endl;
+        for (int i = 0; i < n; ++i)
+        {
+            int val;
+            cin >> val;
 
-    // Tuscias sarasas
-    Node* emptyHead = nullptr;
-    cout << "Tuscio saraso rezultatas: " << countNodes(emptyHead) << endl;
+            Node* newNode = new Node{val, nullptr};
+
+            if (head == nullptr)
+            {
+                head = newNode;
+                tail = newNode;
+            }
+            else
+            {
+                tail->next = newNode;
+                tail = newNode;
+            }
+        }
+    }
+
+    // Rezultatas pagal užduoties formatą
+    cout << "\nRezultatas: " << countNodes(head) << endl;
+
+    // Atminties atlaisvinimas (gera praktika)
+    Node* current = head;
+    while (current != nullptr)
+    {
+        Node* nextNode = current->next;
+        delete current;
+        current = nextNode;
+    }
 
     return 0;
 }
